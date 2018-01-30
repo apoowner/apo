@@ -1,0 +1,48 @@
+#JAVA
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+
+# BLOCKCHAIN DB
+apo_db/
+apo_db*/
+*.log
+
+
+#USER FILE
+.ftpconfig
+.DS_Store
+.idea
+.project
+.settings
+create-genesis-block-master/
+apo.exe
+aposervice.exe
+AUTHORS.txt
+apo.properties
+apo-default.properties
+conf/apo-default.properties
+*.gz
+builds/
+bundles/
+html/
+html/doc/
+classes/
+apo-client-*.jar
+apo-client.html
+apo-client.jnlp
+logs/apo.log.lck
+/bin/
+sources.tmp
+build.xml
+nbproject/
+/src/java/apo/interest
