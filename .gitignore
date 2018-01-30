@@ -34,7 +34,6 @@ conf/apo-default.properties
 *.gz
 builds/
 bundles/
-html/
 html/doc/
 classes/
 apo-client-*.jar
