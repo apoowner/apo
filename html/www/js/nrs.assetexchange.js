@@ -355,7 +355,7 @@ var NRS = (function (NRS, $, undefined) {
     };
 
     NRS.saveAssetBookmarks = function (assetsNew, callback) {
-        
+
         var newAssetIds = [];
         var newAssets = [];
 
@@ -515,7 +515,7 @@ var NRS = (function (NRS, $, undefined) {
             rows += "data-cache='" + i + "' ";
             rows += "data-asset='" + NRS.escapeRespStr(asset.asset) + "'" + (!ungrouped ? " data-groupname='" + NRS.escapeRespStr(asset.groupName) + "'" : "");
             rows += (isClosedGroup ? " style='display:none'" : "") + " data-closed='" + isClosedGroup + "'>";
-            rows += "<h4 class='list-group-item-heading'>" + NRS.escapeRespStr(asset.name) + "</h4>";
+            rows += "<h4 class='list-group-item-heading'>" + NRS.escapeRespStr(asset.name).toUpperCase().escapeHTML() + "</h4>";
             rows += "<p class='list-group-item-text'><span>" + $.t('quantity') + "</span>: " + NRS.formatQuantity(ownsQuantityQNT, asset.decimals) + "</p>";
             rows += "</a>";
         }
@@ -832,7 +832,7 @@ var NRS = (function (NRS, $, undefined) {
         var params = {
             "asset": assetId,
             "firstIndex": 0,
-            "lastIndex": 25
+            "lastIndex": 99
         };
         async.parallel([
             function(callback) {
@@ -929,6 +929,18 @@ var NRS = (function (NRS, $, undefined) {
         if (assetTradeHistoryType == "you") {
             options["account"] = NRS.accountRS;
         }
+
+        /* get exchange rate for selected asset - codec - 2018/3/5 */
+        $("#asset_rate").html('');
+        NRS.sendRequest("getLastTrades", {
+          "assets": assetId
+        }, function (response) {
+          if(response.trades.length==0){
+            $("#asset_rate").html('').hide();
+          }else{
+            $("#asset_rate").html('AMX/' + currentAsset.name + ' ' + NRS.formatOrderPricePerWholeQNT(response.trades[0].priceNQT, currentAsset.decimals)).show();
+          }
+        });
 
         NRS.sendRequest("getTrades+" + assetId, options, function (response) {
             var exchangeTradeHistoryTable = $("#asset_exchange_trade_history_table");
