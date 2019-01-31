@@ -15,18 +15,18 @@ in such a way that no trusted third parties are required anymore.
 
 ----
 # Recommended Requirements #
-----
- - Linux
+
+ *Linux*
   - 4	GB RAM
   - 2	CPU Cores
   - 40	GB Storage
 
- - Windows
+ *Windows*
   - 8 GB RAM
   - 2.9GHz 2 Cores CPU
   - 40 GB Storage
   
- - Mac
+ *Mac*
   - 8 GB RAM
   - 2.0GHz Dual-Core
   - 40 GB Storage
